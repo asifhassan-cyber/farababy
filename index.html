@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>For My Sweet Pudding 🎀</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --pink-light: #ffe6ea;
+    --pink-main: #ffb7c5;
+    --pink-dark: #ff85a2;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: var(--pink-light);
+    font-family: 'Quicksand', sans-serif;
+    height: 100vh;
+    overflow: hidden; /* Prevents scrollbars when button moves */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Floating Background Icons */
+  .bg-icon {
+    position: absolute;
+    font-size: 2rem;
+    opacity: 0.4;
+    z-index: -1;
+    animation: floatUp 15s infinite linear;
+  }
+
+  @keyframes floatUp {
+    0% { transform: translateY(110vh) rotate(0deg); }
+    100% { transform: translateY(-10vh) rotate(360deg); }
+  }
+
+  .container {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 40px 30px; /* Increased top padding since image is gone */
+    border-radius: 25px;
+    box-shadow: 0 15px 35px rgba(255, 133, 162, 0.2);
+    text-align: center;
+    max-width: 90%;
+    width: 380px;
+    border: 4px solid #fff;
+    backdrop-filter: blur(5px);
+    position: relative;
+    z-index: 10;
+  }
+
+  h1 {
+    font-family: 'Fredoka One', cursive;
+    color: var(--pink-dark);
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+
+  .message {
+    color: #666;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+
+  .question {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--pink-dark);
+    display: block;
+    margin-bottom: 25px;
+  }
+
+  /* Buttons */
+  .btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    position: relative;
+    height: 60px; /* Space for buttons */
+  }
+
+  button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Fredoka One', cursive;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  #yesBtn {
+    background: var(--pink-dark);
+    color: white;
+    box-shadow: 0 5px 15px rgba(255, 135, 162, 0.4);
+    /* Heartbeat Effect */
+    animation: heartbeat 1.5s infinite;
+  }
+
+  @keyframes heartbeat {
+    0% { transform: scale(1); }
+    15% { transform: scale(1.05); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.05); }
+    60% { transform: scale(1); }
+    100% { transform: scale(1); }
+  }
+
+  #noBtn {
+    background: white;
+    color: var(--pink-dark);
+    border: 2px solid var(--pink-main);
+    position: absolute; /* Allows it to move freely */
+  }
+
+  /* Success Modal */
+  #modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    width: 85%;
+    max-width: 320px;
+    transform: scale(0.8);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  /* This is your personal photo styling */
+  .modal-photo {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid var(--pink-main);
+    margin-bottom: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+
+  .modal-text {
+    font-family: 'Fredoka One', cursive;
+    color: var(--pink-dark);
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+  }
+
+  /* Confetti Styling */
+  .confetti {
+    position: fixed;
+    width: 10px; height: 10px;
+    z-index: 99;
+    animation: fall linear forwards;
+  }
+
+  @keyframes fall {
+    to { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+  }
+
+</style>
+</head>
+<body>
+
+  <div id="bg-container"></div>
+
+  <div class="container">
+    <h1>Hello My Sweet Pudding</h1>
+    
+    <p class="message">
+      Your pudding asks for forgiveness.<br>
+      He loves you so much and wants to marry you.
+    </p>
+
+    <span class="question">Will you forgive your pudding?</span>
+
+    <div class="btn-group">
+      <button id="yesBtn">Yes Yes Yes 💖</button>
+      <button id="noBtn">No 😡</button>
+    </div>
+  </div>
+
+  <div id="modal">
+    <div class="modal-content">
+      <img src="Snapchat-561811569.jpg" class="modal-photo" alt="Us">
+      <h2 class="modal-text">I LOVE YOU JAAN!</h2>
+      <p style="color: #666; margin-bottom: 20px;">Please unblock me baby 🥺💗</p>
+      <button onclick="window.location.href='forever.html'" style="background: var(--pink-main); color: white; padding: 10px 25px; border:none; border-radius: 20px; font-weight: bold; cursor: pointer;">
+        Okay, I forgive you 🏹
+      </button>
+    </div>
+  </div>
+
+<script>
+  /* --- BACKGROUND ICONS --- */
+  const icons = ['🎀', '💖', '🌸', '🍓', '😻'];
+  const bgContainer = document.getElementById('bg-container');
+
+  for(let i=0; i<15; i++) {
+    const el = document.createElement('div');
+    el.classList.add('bg-icon');
+    el.innerText = icons[Math.floor(Math.random() * icons.length)];
+    el.style.left = Math.random() * 100 + 'vw';
+    el.style.animationDuration = (Math.random() * 10 + 10) + 's';
+    el.style.animationDelay = (Math.random() * 5) + 's';
+    bgContainer.appendChild(el);
+  }
+
+  /* --- EVIL BUTTON LOGIC --- */
+  const noBtn = document.getElementById('noBtn');
+  const yesBtn = document.getElementById('yesBtn');
+  const modal = document.getElementById('modal');
+  const modalContent = document.querySelector('.modal-content');
+
+  function moveButton() {
+    // Calculate available screen space
+    const maxX = window.innerWidth - noBtn.offsetWidth - 20;
+    const maxY = window.innerHeight - noBtn.offsetHeight - 20;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    // Apply fixed position to let it move freely over the whole screen
+    noBtn.style.position = 'fixed';
+    noBtn.style.left = x + 'px';
+    noBtn.style.top = y + 'px';
+  }
+
+  // Triggers for both Desktop and Mobile
+  noBtn.addEventListener('mouseover', moveButton);
+  noBtn.addEventListener('touchstart', (e) => {
+    e.preventDefault(); // Stop click
+    moveButton();
+  });
+
+  /* --- YES BUTTON LOGIC --- */
+  yesBtn.addEventListener('click', () => {
+    // 1. Show Modal with animation
+    modal.style.display = 'flex';
+    // Small timeout to allow display:flex to apply before adding opacity
+    setTimeout(() => {
+      modal.style.opacity = '1';
+      modalContent.style.transform = 'scale(1)';
+    }, 10);
+
+    // 2. Trigger Confetti
+    fireConfetti();
+  });
+
+  /* --- CONFETTI (iPhone Friendly) --- */
+  function fireConfetti() {
+    const colors = ['#ffb7c5', '#ff85a2', '#ffffff', '#ffd1dc'];
+    for(let i=0; i<100; i++) {
+      const conf = document.createElement('div');
+      conf.classList.add('confetti');
+      conf.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      conf.style.left = Math.random() * 100 + 'vw';
+      conf.style.top = -10 + 'px';
+      conf.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      document.body.appendChild(conf);
+      
+      // Cleanup
+      setTimeout(() => conf.remove(), 5000);
+    }
+  }
+</script>
+
+</body>
+</html>
